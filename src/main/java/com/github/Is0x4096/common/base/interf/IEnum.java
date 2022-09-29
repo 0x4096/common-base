@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 /**
  * 枚举基础接口
+ * 之所以用 string,是希望能兼容所有系统定义的状态码
  *
  * @author 0x4096.peng@gmail.com
  * @date 2021/7/24
@@ -18,6 +19,7 @@ public interface IEnum<T> {
      * @return code
      * @apiNote 根据规范 你不应该返回一个 null 值
      */
+    @NotNull
     String getCode();
 
     /**

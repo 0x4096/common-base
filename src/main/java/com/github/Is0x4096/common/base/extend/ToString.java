@@ -26,7 +26,7 @@ public class ToString {
     private static boolean isFastjson;
 
     static {
-        String prop = System.getProperty("com.github.Is0x4096.json.serialize", "fastjson");
+        String prop = System.getProperty("com.github.Is0x4096.json.serialize", null);
         if ("jackson".equalsIgnoreCase(prop)) {
             isJackson = true;
             DEFAULT_MAPPER = new ObjectMapper();

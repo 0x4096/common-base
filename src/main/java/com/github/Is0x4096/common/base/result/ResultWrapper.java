@@ -62,7 +62,8 @@ public class ResultWrapper<T> extends ToString implements Serializable {
      * 链路追踪ID
      */
     @Nullable
-    private String traceId = CommonContext.threadLocal.get();
+    @Builder.Default
+    private String traceId = CommonContext.traceIdThreadLocal.get();
 
     /**
      * 响应数据
