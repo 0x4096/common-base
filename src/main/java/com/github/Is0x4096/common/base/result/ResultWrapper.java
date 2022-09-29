@@ -1,5 +1,6 @@
 package com.github.Is0x4096.common.base.result;
 
+import com.github.Is0x4096.common.base.context.CommonContext;
 import com.github.Is0x4096.common.base.extend.ToString;
 import com.github.Is0x4096.common.base.page.Pagination;
 import lombok.*;
@@ -7,8 +8,6 @@ import lombok.experimental.Accessors;
 
 import javax.annotation.Nullable;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 统一结果包装
@@ -31,40 +30,36 @@ public class ResultWrapper<T> extends ToString implements Serializable {
     private static final long serialVersionUID = 945314152507157220L;
 
     /**
-     * 本次处理成功与否, 默认为 true
-     */
-    @Builder.Default
-    private boolean success = true;
-
-    /**
      * 本业务系统状态码
      */
-    @Nullable
-    private String code;
+    @Builder.Default
+    private int code = 200;
 
     /**
      * 本业务系统响应信息
      */
     @Nullable
-    private String message;
+    @Builder.Default
+    private String message = "success";
 
     /**
      * 下游业务系统状态码
      */
-    @Nullable
-    private String subCode;
+    @Builder.Default
+    private int subCode = 200;
 
     /**
      * 下游业务系统响应信息
      */
     @Nullable
-    private String subMessage;
+    @Builder.Default
+    private String subMessage = "success";
 
     /**
      * 链路追踪ID
      */
     @Nullable
-    private String traceId;
+    private String traceId = CommonContext.threadLocal.get();
 
     /**
      * 响应数据
@@ -77,10 +72,5 @@ public class ResultWrapper<T> extends ToString implements Serializable {
      */
     @Nullable
     private Pagination page;
-
-    /**
-     * 扩展Map
-     */
-    private Map<String, Object> extensionMap = new HashMap<>();
 
 }

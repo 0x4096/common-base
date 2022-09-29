@@ -1,7 +1,8 @@
 package com.github.Is0x4096.common.base.interf;
 
+import jakarta.validation.constraints.NotNull;
+
 import javax.annotation.Nullable;
-import javax.validation.constraints.NotNull;
 
 /**
  * 枚举基础接口
@@ -15,10 +16,8 @@ public interface IEnum<T> {
      * 获取 code
      *
      * @return code
-     * @apiNote 根据规范 你不应该返回一个 null 值
      */
-    @NotNull
-    String getCode();
+    int getCode();
 
     /**
      * 获取 message
@@ -48,6 +47,6 @@ public interface IEnum<T> {
      * @apiNote 可能为 null
      */
     @Nullable
-    T parseByCode(String code);
+    T parseByCode(int code);
 
 }

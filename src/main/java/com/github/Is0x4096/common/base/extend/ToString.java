@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * 重写 toString 方法, 其他类继承此类即可 默认使用 fastjson 若使用 Jackson 可通过
- * System.setProperty("com.github.0x4096.json.serialize", "Jackson") 配置
+ * System.setProperty("com.github.Is0x4096.json.serialize", "Jackson") 配置
  *
  * @author 0x4096.peng@gmail.com
  * @date 2021/7/24
@@ -23,10 +23,11 @@ public class ToString {
 
     private static ObjectMapper DEFAULT_MAPPER;
     private static boolean isJackson;
+    private static boolean isFastjson;
 
     static {
-        String prop = System.getProperty("com.github.0x4096.json.serialize", "fastjson");
-        if ("Jackson".equalsIgnoreCase(prop)) {
+        String prop = System.getProperty("com.github.Is0x4096.json.serialize", "fastjson");
+        if ("jackson".equalsIgnoreCase(prop)) {
             isJackson = true;
             DEFAULT_MAPPER = new ObjectMapper();
             DEFAULT_MAPPER.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
@@ -37,8 +38,11 @@ public class ToString {
             DEFAULT_MAPPER.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
             DEFAULT_MAPPER.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
             log.info("com.github.Is0x4096.common.base.extend.ToString 使用 Jackson 序列化");
-        } else {
+        } else if ("fastjson".equalsIgnoreCase(prop)) {
+            isFastjson = true;
             log.info("com.github.Is0x4096.common.base.extend.ToString 使用 fastjson 序列化");
+        } else {
+            log.info("com.github.Is0x4096.common.base.extend.ToString 使用 jdk.toSting 序列化");
         }
     }
 
@@ -46,9 +50,11 @@ public class ToString {
     public String toString() {
         if (isJackson) {
             return jackSon(this, DEFAULT_MAPPER);
-        } else {
+        } else if (isFastjson) {
             return fastjson(this);
         }
+
+        return super.toString();
     }
 
 
