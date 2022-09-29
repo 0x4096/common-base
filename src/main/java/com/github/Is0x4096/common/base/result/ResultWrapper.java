@@ -3,6 +3,7 @@ package com.github.Is0x4096.common.base.result;
 import com.github.Is0x4096.common.base.context.CommonContext;
 import com.github.Is0x4096.common.base.extend.ToString;
 import com.github.Is0x4096.common.base.page.Pagination;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -31,29 +32,31 @@ public class ResultWrapper<T> extends ToString implements Serializable {
 
     /**
      * 本业务系统状态码
+     * 根据约定，你不应该返回 null
      */
+    @NotNull
     @Builder.Default
-    private int code = 200;
+    private String code = "200";
 
     /**
      * 本业务系统响应信息
+     * 根据约定，你不应该返回 null
      */
-    @Nullable
+    @NotNull
     @Builder.Default
     private String message = "success";
 
     /**
      * 下游业务系统状态码
      */
-    @Builder.Default
-    private int subCode = 200;
+    @Nullable
+    private String subCode;
 
     /**
      * 下游业务系统响应信息
      */
     @Nullable
-    @Builder.Default
-    private String subMessage = "success";
+    private String subMessage;
 
     /**
      * 链路追踪ID

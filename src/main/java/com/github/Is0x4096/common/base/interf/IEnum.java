@@ -16,8 +16,9 @@ public interface IEnum<T> {
      * 获取 code
      *
      * @return code
+     * @apiNote 根据规范 你不应该返回一个 null 值
      */
-    int getCode();
+    String getCode();
 
     /**
      * 获取 message
@@ -47,6 +48,6 @@ public interface IEnum<T> {
      * @apiNote 可能为 null
      */
     @Nullable
-    T parseByCode(int code);
+    T parseByCode(String code);
 
 }
