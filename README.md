@@ -31,8 +31,7 @@ https://github.com/0x4096/common-base
                     │       ├── ReqVO.java
                     │       └── RespVO.java
                     └── result
-                        ├── ResultWrapper.java
-                        └── ResultWrapperUtils.java
+                        └── R.java
 
 ```
 
@@ -42,6 +41,8 @@ https://github.com/0x4096/common-base
 <dependency>
     <groupId>com.github.0x4096</groupId>
     <artifactId>common-base</artifactId>
-    <version>2.0.2</version>
+    <version>2.1.0</version>
 </dependency>
 ```
+
+做了一个非常糟糕的决定，就是删除了部分代码，没有做向下兼容...
