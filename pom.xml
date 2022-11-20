@@ -30,7 +30,7 @@
         <connection>scm:git:https://github.com/0x4096/common-base</connection>
         <developerConnection>scm:git:git@github.com:0x4096/common-base.git</developerConnection>
         <url>git@github.com:0x4096/common-base.git</url>
-        <tag>2.0.1</tag>
+        <tag>2.1.0</tag>
     </scm>
 
     <properties>
